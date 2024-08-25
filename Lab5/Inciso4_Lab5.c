@@ -29,3 +29,7 @@ int main() {
     
     return 0;
 }
+
+// Explicación
+//Variable1 con shared: Variable compartida donde todos los hilos acceden a la misma instancia de la variable.
+//Variable2 con private: cada variable tiene su propia copia de la variable por lo que no hay interferencia entre hilos.
