@@ -21,7 +21,6 @@
 
 #define N 131072
 long count_key(long Nlen, long *a, long key) {
-    double start = omp_get_wtime( );
     long count = 0;
     for (int i = 0; i < Nlen; i++)
         if (a[i] == key) count++;
@@ -30,15 +29,12 @@ long count_key(long Nlen, long *a, long key) {
 
 int main() {
     long a[N], key = 42, nkey = 0;
-    double start, end;
     for (long i = 0; i < N; i++) a[i] = rand() % N;
     a[N % 43] = key; 
     a[N % 73] = key; 
     a[N % 3] = key;
     
     nkey = count_key(N, a, key);  // cuenta key secuencialmente
-    end = omp_get_wtime( );
     printf("Numero de veces que 'key' aparece secuencialmente: %ld\n", nkey);
-    printf("Inicio = %.4g\nFinal = %.4g\nTiempo transcurrido = %.4g\n", start, end, end - start);
     return 0;
 }
